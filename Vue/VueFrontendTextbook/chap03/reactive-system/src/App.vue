@@ -1,21 +1,23 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+  import { ref } from 'vue';
+
+  const now = new Date();
+  const nowStr = now.toLocaleTimeString();
+  let timeStr = nowStr;
+  const timeStrRef = ref(nowStr);
+  function changeTime() {
+    const newNow = new Date();
+    const newNowStr = newNow.toLocaleTimeString();
+    timeStr = newNowStr;
+    timeStrRef.value = newNowStr;
+  }
+  setInterval(changeTime, 1000);
 </script>
 
 <template>
-  <div id="app">
-    <header>
-      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
-      </div>
-    </header>
-
-    <main>
-      <TheWelcome />
-    </main>
+  <div>
+    <p>Current Time: {{ timeStr }}</p>
+    <p>Current Time (ref): {{ timeStrRef }}</p>
   </div>
 </template>
 
