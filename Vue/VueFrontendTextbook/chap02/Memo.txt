@@ -1,0 +1,11 @@
+npm init vue@latest
+# npm init vue@2.*
+cd hello-vue
+npm install
+npm run format
+npm run dev
+
+
+
+
+npm init vite@latest
